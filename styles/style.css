@@ -1,0 +1,160 @@
+/* Online Quiz Study App Styles */
+
+/* Apply a clean sans-serif font throughout the app */
+html, body, [class*="css"] {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+/* Header styling */
+.main-header {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.sub-header {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Question card styling */
+.flashcard-container {
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.flashcard-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+}
+
+.question-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #34495e;
+    line-height: 1.6;
+}
+
+/* Answer styling */
+.answer-text {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #2c7873;
+    background-color: #e3f4f1;
+    padding: 20px;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-left: 5px solid #2c7873;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+/* Button styling */
+button {
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    padding: 0.6rem 1.2rem !important;
+    font-size: 1rem !important;
+    transition: all 0.2s ease !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1) !important;
+}
+
+/* Primary buttons (Show Answer, Submit) */
+button[data-baseweb="button"]:first-of-type {
+    background-color: #3498db !important;
+    color: white !important;
+}
+
+/* Secondary buttons (Next Question) */
+button[data-baseweb="button"]:last-of-type {
+    background-color: #2ecc71 !important;
+    color: white !important;
+}
+
+/* Progress bar styling */
+.stProgress > div > div {
+    background-color: #3498db !important;
+}
+
+.progress-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #7f8c8d;
+    margin-top: 8px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Quiz mode radio buttons */
+.stRadio > div {
+    padding: 15px !important;
+    margin-bottom: 10px !important;
+    border-radius: 8px !important;
+    background-color: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    transition: all 0.2s ease !important;
+}
+
+.stRadio > div:hover {
+    background-color: #e9f7fe !important;
+    border-color: #3498db !important;
+}
+
+/* Quote of the day styling */
+.quote {
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 60px;
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px 10px;
+    border-top: 1px solid #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 30px;
+    color: #95a5a6;
+    padding-bottom: 30px;
+}
+
+/* Sidebar styling */
+.sidebar .sidebar-content {
+    background-color: #f8f9fa !important;
+}
+
+.sidebar h2 {
+    color: #2c3e50 !important;
+    font-weight: 700 !important;
+    margin-bottom: 20px !important;
+}
+
+.sidebar h3 {
+    color: #34495e !important;
+    font-weight: 600 !important;
+    margin-top: 30px !important;
+}
