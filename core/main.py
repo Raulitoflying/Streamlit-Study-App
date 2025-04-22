@@ -14,7 +14,7 @@ from utils.helpers import (
     get_random_quote, apply_theme
 )
 from components.flashcard_box import (
-    render_flashcard, render_quiz_question, render_progress_bar,
+    render_quiz_question, render_progress_bar,
     render_quiz_progress, render_quote, render_footer
 )
 
@@ -63,7 +63,29 @@ def main():
             
             # Display current question
             current_card = st.session_state.active_cards[st.session_state.current_card_index]
-            render_flashcard(current_card)
+            
+            # Display question directly on page with padding
+            st.markdown(f"### Question {st.session_state.current_card_index + 1} of {len(st.session_state.active_cards)}")
+            st.markdown(f"<div class='question-section'><span class='question-text'>{current_card['question']}</span></div>", unsafe_allow_html=True)
+            
+            # Show answer if the button has been clicked
+            if st.session_state.show_answer:
+                st.markdown(f"<div class='answer-section'><span class='answer-text'>{current_card['answer']}</span></div>", unsafe_allow_html=True)
+            
+            # Create two columns for buttons with equal width
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                # Toggle between "Show Answer" and "Hide Answer"
+                button_text = "Hide Answer" if st.session_state.show_answer else "Show Answer"
+                if st.button(button_text, key="toggle_answer_button", use_container_width=True):
+                    st.session_state.show_answer = not st.session_state.show_answer
+                    st.rerun()
+            
+            with col2:
+                if st.button("Next Question", key="next_question_button", use_container_width=True):
+                    next_card()
+                    st.rerun()
         else:
             st.warning("No questions match your current filters. Please adjust your settings.")
     else:

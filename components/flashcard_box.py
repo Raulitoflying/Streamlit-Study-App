@@ -1,37 +1,10 @@
 """
 Quiz Box component for the Online Quiz Study App.
 
-This module contains functions to render the flashcard and quiz UI.
+This module contains functions to render the quiz UI.
 """
 import streamlit as st
-from utils.helpers import toggle_answer, next_card, check_answer, next_quiz_question
-
-def render_flashcard(current_card):
-    """
-    Render a flashcard with question and answer.
-    
-    Args:
-        current_card: The current flashcard data
-    """
-    # Question display with styling
-    st.markdown('<div class="flashcard-container">', unsafe_allow_html=True)
-    st.markdown(f"<h3>Question: <span class='question-text'>{current_card['question']}</span></h3>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-    
-    # Show answer if the button has been clicked
-    if st.session_state.show_answer:
-        st.markdown(f"<h3>Answer: <span class='answer-text'>{current_card['answer']}</span></h3>", unsafe_allow_html=True)
-    
-    # Create two columns for buttons with equal width
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        # Toggle between "Show Answer" and "Hide Answer"
-        button_text = "Hide Answer" if st.session_state.show_answer else "Show Answer"
-        st.button(button_text, on_click=toggle_answer, key="toggle_answer_button", use_container_width=True)
-    
-    with col2:
-        st.button("Next Question", on_click=next_card, key="next_question_button", use_container_width=True)
+from utils.helpers import check_answer, next_quiz_question
 
 def render_quiz_question(current_question):
     """
@@ -40,10 +13,12 @@ def render_quiz_question(current_question):
     Args:
         current_question: The current quiz question data
     """
-    # Display question in a styled container
-    st.markdown('<div class="flashcard-container">', unsafe_allow_html=True)
-    st.markdown(f"<h3>Question: <span class='question-text'>{current_question['question']}</span></h3>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+    # Display question header
+    st.markdown(f"### Question {st.session_state.current_quiz_index + 1} of {len(st.session_state.active_quiz_questions)}")
+    
+    # Display question directly on page with padding
+    # Using question-section class which has proper styling for both light and dark modes
+    st.markdown(f"<div class='question-section'><span class='question-text'>{current_question['question']}</span></div>", unsafe_allow_html=True)
     
     # Display options as radio buttons
     if not st.session_state.answer_selected:

@@ -26,20 +26,13 @@ html, body, [class*="css"] {
     margin-bottom: 40px;
 }
 
-/* Question card styling */
-.flashcard-container {
-    padding: 30px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    background-color: white;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    border: 1px solid #e0e0e0;
-}
-
-.flashcard-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+/* Question section styling */
+.question-section {
+    padding: 20px;
+    margin-bottom: 25px;
+    border-left: 4px solid #4CAF50;
+    background-color: #F5F5F5;
+    border-radius: 0 8px 8px 0;
 }
 
 .question-text {
@@ -49,7 +42,17 @@ html, body, [class*="css"] {
     line-height: 1.6;
 }
 
+/* Specific rule for question text inside white cards */
+.white-card .question-text {
+    color: #34495e !important; /* Dark color for text on white backgrounds */
+}
+
 /* Answer styling */
+.answer-section {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
 .answer-text {
     font-size: 1.3rem;
     font-weight: 500;
@@ -60,7 +63,6 @@ html, body, [class*="css"] {
     display: block;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     border-left: 5px solid #2c7873;
-    margin-top: 15px;
     line-height: 1.5;
 }
 
@@ -82,19 +84,19 @@ button:hover {
 
 /* Primary buttons (Show Answer, Submit) */
 button[data-baseweb="button"]:first-of-type {
-    background-color: #3498db !important;
+    background-color: #4CAF50 !important;
     color: white !important;
 }
 
 /* Secondary buttons (Next Question) */
 button[data-baseweb="button"]:last-of-type {
-    background-color: #2ecc71 !important;
+    background-color: #3498db !important;
     color: white !important;
 }
 
 /* Progress bar styling */
 .stProgress > div > div {
-    background-color: #3498db !important;
+    background-color: #4CAF50 !important;
 }
 
 .progress-text {
@@ -119,6 +121,63 @@ button[data-baseweb="button"]:last-of-type {
 .stRadio > div:hover {
     background-color: #e9f7fe !important;
     border-color: #3498db !important;
+}
+
+/* Dark mode radio button styling - ensure text is visible */
+@media (prefers-color-scheme: dark) {
+    .stRadio label {
+        color: #ffffff !important;
+        font-weight: 500 !important;
+    }
+    
+    .stRadio > div {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .stRadio > div:hover {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    /* Also ensure other text elements are visible in dark mode */
+    .question-text {
+        color: #ffffff !important;
+    }
+    
+    /* Override for white backgrounds in dark mode */
+    .white-card .question-text {
+        color: #333333 !important; /* Dark text on white cards in dark mode */
+    }
+    
+    /* Dark mode override for question-section */
+    .question-section {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    /* Question text within the question-section should be light in dark mode */
+    .question-section .question-text {
+        color: #ffffff !important;
+    }
+    
+    .progress-text {
+        color: #e0e0e0 !important;
+    }
+    
+    /* Radio button specific styles to ensure contrast */
+    .stMarkdown p {
+        color: #ffffff !important;
+    }
+    
+    /* For the radio buttons themselves */
+    .stRadio input[type="radio"] + div {
+        border-color: #ffffff !important;
+    }
+    
+    .stRadio input[type="radio"]:checked + div {
+        background-color: #4CAF50 !important;
+        border-color: #4CAF50 !important;
+    }
 }
 
 /* Quote of the day styling */
@@ -157,4 +216,21 @@ button[data-baseweb="button"]:last-of-type {
     color: #34495e !important;
     font-weight: 600 !important;
     margin-top: 30px !important;
+}
+
+/* Success and error message styling */
+.stSuccess {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    border-color: #c3e6cb !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+}
+
+.stError {
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    border-color: #f5c6cb !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
 }
